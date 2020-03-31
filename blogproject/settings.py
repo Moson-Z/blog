@@ -23,7 +23,7 @@ SECRET_KEY = 'db!%#)#4r_yqlzdk%dpg&vd+7to)l6f=@#ol^%r5cpf$1la%fh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.moson.vip']
 
 # Application definition
 
