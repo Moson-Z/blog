@@ -52,6 +52,10 @@ class Article(models.Model):
         self.modified_time = timezone.now()
         super().save(*args, **kwargs)
 
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
+
     title = models.CharField("标题", max_length=100)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField("正文")
@@ -60,3 +64,4 @@ class Article(models.Model):
     created_time = models.DateTimeField("创建时间", default=timezone.now)
     modified_time = models.DateTimeField("修改时间")
     excerpt = models.CharField("摘要", max_length=200, blank=True)
+    views = models.PositiveIntegerField(default=0, editable=False)
