@@ -28,7 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    # 'blog',
+    # 'comments',
     'comments.apps.CommentsConfig',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +124,17 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 2, # 分页条开头和结尾显示的页数
     'SHOW_FIRST_PAGE_WHEN_INVALID': True, # 当请求了不存在页，显示第一页
 }
+
+# 搜索设置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine',
+        'URL': '',
+        'INDEX_NAME': 'hellodjango_blog_tutorial',
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # LOGGING = {
 #     'version': 1,
