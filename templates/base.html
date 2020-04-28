@@ -55,6 +55,14 @@
           padding-left: 10px;
           white-space: pre;
         }
+
+        .toc ul {
+            padding-left: 30px;
+        }
+
+        .toc ul:first-child{
+            padding-left: 0;
+        }
     </style>
 
     <!-- js -->
@@ -132,10 +140,6 @@
             <aside class="col-md-4">
                 {% block toc %}
                 {% endblock toc %}
-                {% show_recent_article %}
-                {% show_archives %}
-                {% show_categories %}
-                {% show_tags %}
                 <div class="rss">
                     <a href="{% url 'rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
                 </div>

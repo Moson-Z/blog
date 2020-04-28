@@ -6,12 +6,11 @@ import markdown
 from distlib.util import cached_property
 from django.contrib.auth.models import User
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
+from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
-
 
 class Category(models.Model):
 
@@ -23,7 +22,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def num_articles(self):
+        # print(Article.objects.filter(category=self))
+        return Article.objects.filter(category=self).count()
+
     name = models.CharField(max_length=100)
+    num = models.IntegerField()
 
 
 class Tag(models.Model):
@@ -35,6 +39,9 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def num_articles(self):
+        return Article.objects.filter(id__in=[a.id for a in self.article_set.all()]).count()
 
     name = models.CharField(max_length=100)
 
@@ -88,6 +95,7 @@ def generate_rich_content(value):
         extensions=[
             "markdown.extensions.extra",
             "markdown.extensions.codehilite",
+            # 'markdown.extensions.toc',
             # 记得在顶部引入 TocExtension 和 slugify
             TocExtension(slugify=slugify),
         ]

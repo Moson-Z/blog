@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load comment_extras %}
+{% load blog_extras %}
 {% block title %}
     <title>{{ article.title }}</title>
 {% endblock title %}
@@ -40,4 +41,6 @@
       </div>
     </div>
   {% endif %}
+    {% show_this_category article %}
+    {% show_this_tag article %}
 {% endblock toc %}

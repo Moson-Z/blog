@@ -28,10 +28,26 @@ def show_categories(context):
         'category_list': category_list,
     }
 
+@register.inclusion_tag('blog/inclusions/_categories.html', takes_context=True)
+def show_this_category(context, article):
+    # category_list = Category.objects.annotate(num_articles=Count('article')).filter(name=article.category)
+    category_list = Category.objects.filter(name=article.category.name)
+    return {
+        # 'category_list': Category.objects.all(),
+        'category_list': category_list,
+    }
+
 @register.inclusion_tag('blog/inclusions/_tags.html', takes_context=True)
 def show_tags(context):
     tag_list = Tag.objects.annotate(num_articles=Count('article')).filter(num_articles__gt=0)
     return {
         # 'tag_list': Tag.objects.all(),
+        'tag_list': tag_list,
+    }
+
+@register.inclusion_tag('blog/inclusions/_tags.html', takes_context=True)
+def show_this_tag(context, article):
+    tag_list = Tag.objects.filter(name__in=[t.name for t in article.tag.all()])
+    return {
         'tag_list': tag_list,
     }

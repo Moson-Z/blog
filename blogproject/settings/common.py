@@ -27,10 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    # 'blog',
-    # 'comments',
-    'comments.apps.CommentsConfig',
+    # 'blog.apps.BlogConfig',
+    'blog',
+    'comments',
+    # 'comments.apps.CommentsConfig',
     'haystack',
 ]
 

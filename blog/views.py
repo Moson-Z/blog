@@ -25,6 +25,10 @@ class IndexView(PaginationMixin, ListView):
 class CategoryView(IndexView):
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
+        print(cate)
+        print(type(cate))
+        a = Article.objects.filter(category=cate).count()
+        print(a)
         return super(CategoryView, self).get_queryset().filter(category=cate)
 
 class TagView(IndexView):
