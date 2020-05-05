@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'comments',
     # 'comments.apps.CommentsConfig',
     'haystack',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -116,7 +117,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (  # 自定义静态文件位置
+    os.path.join(BASE_DIR, "static"),  # 注意不要丢掉这个逗号，因为这是个元祖
+)
 
 # django-pure-pagination 分页设置
 PAGINATION_SETTINGS = {

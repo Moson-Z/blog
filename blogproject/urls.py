@@ -20,6 +20,7 @@ from blog.feeds import AllPostsRssFeed
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls", namespace="blog")),
+    path('user/', include("user.urls", namespace="user")),
     path('comment/', include("comments.urls", namespace="comments")),
     path('all/rss/', AllPostsRssFeed(), name='rss'),
     path('search/', include('haystack.urls')),

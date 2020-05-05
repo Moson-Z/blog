@@ -1,0 +1,44 @@
+{% extends "bases.html" %}
+{% load staticfiles %}
+{% block title %}register user{% endblock %}
+
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>注册</h1>
+    <p>如果您已有账号，<strong><a href="{% url 'user:login' %}">登录</a></strong></p>
+    <form class="form-horizontal" action="." method="post">{% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}" class="col-md-5 control-label">用户名</label>
+            <div class="col-md-6 text-left">{{ form.username }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}" class="col-md-5 control-label">密码</label>
+            <div class="col-md-6 text-left">{{ form.password1 }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}" class="col-md-5 control-label">再次输入密码</label>
+            <div class="col-md-6 text-left">{{ form.password2 }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ profile.email.id_for_label }}" class="col-md-5 control-label">邮箱</label>
+            <div class="col-md-6 text-left">{{ profile.email }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ profile.birth.id_for_label }}" class="col-md-5 control-label">生日</label>
+            <div class="col-md-6 text-left">{{ profile.birth }}</div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ profile.phone.id_for_label }}" class="col-md-5 control-label">手机号</label>
+            <div class="col-md-6 text-left">{{ profile.phone }}</div>
+        </div>
+
+        <input type="submit" class="btn btn-primary btn-lg" value="注册">
+    </form>
+</div>
+{% endblock %}
