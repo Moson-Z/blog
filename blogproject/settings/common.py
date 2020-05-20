@@ -141,6 +141,24 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
+# django redis
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         # 这里写远程的ip 和 端口
+#         "LOCATION": "redis://101.17.37.120:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         }
+#     }
+# }
+#
+# # 本地缓存的方式
+# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# # 用的是哪个缓存
+# SESSION_CACHE_ALIAS = "default"
+
+
 # LOGGING = {
 #     'version': 1,
 #     'disable_existing_loggers': False,
